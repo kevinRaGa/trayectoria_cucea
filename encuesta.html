@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIIAU - Encuesta Socioeconómica</title>
+  <style>
+    /* --- Copia exacta del estilo de main --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f5f7fa; }
+
+    header {
+      background: linear-gradient(to right, #2c3e50, #3498db);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 100;
+    }
+    .menu-toggle { background: none; border: none; color: white; font-size: 24px; cursor: pointer; margin-right: 15px; }
+    .header-center { flex-grow: 1; display: flex; justify-content: center; align-items: center; }
+    header img { height: 55px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.3)); }
+
+    .container { display: flex; min-height: calc(100vh - 80px); }
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to bottom, #2c3e50, #34495e);
+      color: white;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 80px; left: 0;
+      height: calc(100% - 80px);
+      z-index: 90;
+    }
+    .sidebar.closed { left: -250px; }
+    .sidebar-content { padding: 20px 15px; width: 250px; }
+    .sidebar h3 { color: #ff7b7b; font-size: 18px; margin: 10px 0 20px; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .sidebar ul { list-style: none; }
+    .sidebar ul li { font-size: 14px; margin: 10px 0; padding: 12px 15px; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
+    .sidebar ul li a { display: block; text-decoration: none; color: inherit; }
+    .sidebar ul li:hover { background-color: rgba(255,255,255,0.1); }
+    .sidebar .exit { margin-top: 40px; font-weight: bold; padding: 12px; border-radius: 6px; cursor: pointer; }
+    .sidebar .exit:hover { background-color: rgba(255,0,0,0.2); }
+
+    .content {
+      flex-grow: 1;
+      padding: 25px;
+      background-color: #fff;
+      border-radius: 8px 0 0 0;
+      margin: 10px 10px 10px 0;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      margin-left: 250px;
+      transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .content.centered { margin-left: 0; }
+
+    .username {
+      background: linear-gradient(to right, #2c3e50, #4a6580);
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 25px;
+      border-radius: 6px;
+    }
+
+    /* --- Encuesta --- */
+    .survey-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fdfdfd;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .survey-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #34495e;
+    }
+    .question input[type="text"],
+    .question select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    .question input[type="radio"],
+    .question input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(to right, #4a00e0, #00c6ff);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .submit-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar { left: -250px; }
+      .sidebar.open { left: 0; }
+      .overlay { display: none; position: fixed; top: 80px; left: 0; width: 100%; height: calc(100% - 80px); background: rgba(0,0,0,0.5); z-index: 98; }
+      .content { margin-left: 10px; width: calc(100% - 20px); }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="header-center">
+    <a href="main.html">
+      <img src="images/udeg.svg" alt="Logo UdeG">
+    </a>
+  </div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+      <h3><span>Menu</span></h3>
+      <ul>
+        <li><a href="historial.html">Historial académico</a></li>
+        <li><a href="materias.html">Materias recomendadas</a></li>
+        <li><a href="encuesta.html">Encuesta socioeconómica</a></li>
+        <li><a href="horario.html">Horario recomendado</a></li>
+        <li><a href="calendario.html">Calendario</a></li>
+      </ul>
+      <div class="exit">SALIR</div>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+    <div class="username">JOSE EDUARDO RAMIREZ GUZMAN</div>
+
+    <div class="survey-container">
+      <h2>Encuesta Socioeconómica</h2>
+      <form>
+        <div class="question">
+          <label>¿Cuál es el ingreso mensual de tu hogar?</label>
+          <select>
+            <option>Menos de $5,000</option>
+            <option>$5,000 - $10,000</option>
+            <option>$10,000 - $20,000</option>
+            <option>Más de $20,000</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>¿Cuántas personas dependen de este ingreso?</label>
+          <input type="number" min="1" max="20" placeholder="Ejemplo: 4">
+        </div>
+
+        <div class="question">
+          <label>Tipo de vivienda</label>
+          <select>
+            <option>Propia</option>
+            <option>Rentada</option>
+            <option>Prestada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>¿Tienes acceso a Internet en casa?</label>
+          <input type="radio" name="internet" value="si"> Sí
+          <input type="radio" name="internet" value="no"> No
+        </div>
+
+        <div class="question">
+          <label>Medio principal de transporte a la escuela</label>
+          <select>
+            <option>Transporte público</option>
+            <option>Automóvil propio</option>
+            <option>Bicicleta</option>
+            <option>A pie</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar Encuesta</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const content = document.getElementById('content');
+  const overlay = document.getElementById('overlay');
+
+  function toggleMenu() {
+    sidebar.classList.toggle('closed');
+    content.classList.toggle('centered');
+    if (window.innerWidth <= 768) {
+      sidebar.classList.toggle('open');
+      overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+    }
+  }
+
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      sidebar.classList.remove('open');
+      overlay.style.display = 'none';
+    } else {
+      sidebar.classList.add('closed');
+      content.classList.add('centered');
+    }
+  });
+
+  if (window.innerWidth <= 768) {
+    sidebar.classList.add('closed');
+    content.classList.add('centered');
+  }
+
+  // Cerrar menú al hacer scroll
+  window.addEventListener("scroll", function() {
+    sidebar.classList.add("closed");
+    content.classList.add("centered");
+    if (window.innerWidth <= 768) {
+      sidebar.classList.remove("open");
+      overlay.style.display = "none";
+    }
+  });
+</script>
+</body>
+</html>
