@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIIAU - Encuesta Socioeconómica</title>
+  <link rel="stylesheet" href="../assets/css/encuesta.css">
+</head>
+<body>
+<header>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="header-center">
+    <a href="main.html">
+      <img src="../assets/images/udeg.svg" alt="Logo UdeG">
+    </a>
+  </div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="container">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+      <h3><span>Menu</span></h3>
+      <ul>
+        <li><a href="../pages/historial.html">Historial académico</a></li>
+        <li><a href="../pages/materias.html">Materias recomendadas</a></li>
+        <li><a href="encuesta.html">Encuesta socioeconómica</a></li>
+        <li><a href="horario.html">Horario recomendado</a></li>
+        <li><a href="calendario.html">Calendario</a></li>
+      </ul>
+      <div class="exit">SALIR</div>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+    <div class="username">JOSE EDUARDO RAMIREZ GUZMAN</div>
+
+    <div class="survey-container">
+      <h2>Encuesta Socioeconómica</h2>
+      <form>
+        <div class="question">
+          <label>¿Cuál es el ingreso mensual de tu hogar?</label>
+          <select>
+            <option>Menos de $5,000</option>
+            <option>$5,000 - $10,000</option>
+            <option>$10,000 - $20,000</option>
+            <option>Más de $20,000</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>¿Cuántas personas dependen de este ingreso?</label>
+          <input type="number" min="1" max="20" placeholder="Ejemplo: 4">
+        </div>
+
+        <div class="question">
+          <label>Tipo de vivienda</label>
+          <select>
+            <option>Propia</option>
+            <option>Rentada</option>
+            <option>Prestada</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>¿Tienes acceso a Internet en casa?</label>
+          <input type="radio" name="internet" value="si"> Sí
+          <input type="radio" name="internet" value="no"> No
+        </div>
+
+        <div class="question">
+          <label>Medio principal de transporte a la escuela</label>
+          <select>
+            <option>Transporte público</option>
+            <option>Automóvil propio</option>
+            <option>Bicicleta</option>
+            <option>A pie</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar Encuesta</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/encuesta.js"></script>
+</body>
+</html>
