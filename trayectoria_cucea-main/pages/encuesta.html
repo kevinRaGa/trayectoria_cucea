@@ -5,33 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SIIAU - Encuesta Socioeconómica</title>
   <link rel="stylesheet" href="../assets/css/encuesta.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
-<header>
-  <button class="menu-toggle" id="menuToggle">☰</button>
-  <div class="header-center">
-    <a href="main.html">
-      <img src="../assets/images/udeg.svg" alt="Logo UdeG">
-    </a>
-  </div>
-</header>
+  <header>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <div class="header-center">
+      <a href="main.html">
+        <img src="../assets/images/udeg.svg" alt="Logo UdeG">
+      </a>
+    </div>
+  </header>
 
 <div class="overlay" id="overlay"></div>
 
 <div class="container">
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-content">
-      <h3><span>Menu</span></h3>
-      <ul>
-        <li><a href="../pages/historial.html">Historial académico</a></li>
-        <li><a href="../pages/materias.html">Materias recomendadas</a></li>
-        <li><a href="encuesta.html">Encuesta socioeconómica</a></li>
-        <li><a href="horario.html">Horario recomendado</a></li>
-        <li><a href="calendario.html">Calendario</a></li>
-      </ul>
-      <div class="exit">SALIR</div>
-    </div>
-  </div>
+  
+  <div id="sidebar-container"></div>
+    <script>
+    fetch("sidebar.html")
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+        });
+    </script>
 
   <div class="content" id="content">
     <div class="username">JOSE EDUARDO RAMIREZ GUZMAN</div>

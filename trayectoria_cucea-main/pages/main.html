@@ -1,14 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
+    
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIIAU - MÃ³dulo Escolar</title>
+  <title>SIIAU - Módulo Escolar</title>
   <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
+
 <body>
   <header>
-    <button class="menu-toggle" id="menuToggle">â˜°</button>
+    <button class="menu-toggle" id="menuToggle">☰</button>
     <div class="header-center">
       <img src="../assets/images/udeg.svg">
     </div>
@@ -17,20 +20,15 @@
   <div class="overlay" id="overlay"></div>
 
   <div class="container">
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-content">
-        <h3><div class="icon"></div><span>Menu</span></h3>
-        <ul>
-            <li><a href="historial.html">Historial acadÃ©mico</a></li>
-            <li><a href="materias.html">Materias recomendadas</a></li>
-            <li><a href="encuesta.html">Encuesta socioeconÃ³mica</a></li>
-            <li><a href="horario.html">Horario recomendado</a></li>
-            <li><a href="calendario.html">Calendario</a></li>
-          </ul>
-          
-        <div class="exit"><div class="icon"></div> SALIR</div>
-      </div>
-    </div>
+
+    <div id="sidebar-container"></div>
+    <script>
+    fetch("sidebar.html")
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+        });
+    </script>
 
     <div class="content" id="content">
       <div class="username">JOSE EDUARDO RAMIREZ GUZMAN</div>
@@ -52,7 +50,7 @@
             </svg>
             <div class="number" id="creditos">0</div>
           </div>
-          <h3>CrÃ©ditos Adquiridos</h3>
+          <h3>Créditos Adquiridos</h3>
         </div>
         <div class="card">
             <div class="circle">

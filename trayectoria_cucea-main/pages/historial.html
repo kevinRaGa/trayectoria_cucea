@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIIAU - MÃ³dulo Escolar</title>
+  <title>SIIAU - Módulo Escolar</title>
   <link rel="stylesheet" href="../assets/css/historial.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
 </head>
 <body>
   <header>
-    <button class="menu-toggle" id="menuToggle">â˜°</button>
+    <button class="menu-toggle" id="menuToggle">☰</button>
     <div class="header-center">
       <img src="../assets/images/udeg.svg">
     </div>
@@ -17,104 +18,98 @@
   <div class="overlay" id="overlay"></div>
 
   <div class="container">
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-content">
-        <h3><div class="icon"></div><span>Menu</span></h3>
-        <ul>
-            <li><a href="historial.html">Historial acadÃ©mico</a></li>
-            <li><a href="materias.html">Materias recomendadas</a></li>
-            <li><a href="encuesta.html">Encuesta socioeconÃ³mica</a></li>
-            <li><a href="horario.html">Horario recomendado</a></li>
-            <li><a href="calendario.html">Calendario</a></li>
-          </ul>
-          
-        <div class="exit"><div class="icon"></div> SALIR</div>
-      </div>
-    </div>
+
+    <div id="sidebar-container"></div>
+    <script>
+    fetch("sidebar.html")
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+        });
+    </script>
 
     <div class="content" id="content">
       <div class="username">JOSE EDUARDO RAMIREZ GUZMAN</div>
 
             <!-- Historial acadÃ©mico -->
             <div class="historial">
-                <h2 style="text-align:center; margin-bottom:20px;">Historial AcadÃ©mico</h2>
+                <h2 style="text-align:center; margin-bottom:20px;">Historial Académico</h2>
                 <div class="malla">
-                  <!-- Semestre 1 -->
                   <div class="semestre">S1</div>
-                  <div class="materia cursada">MatemÃ¡ticas I</div>
-                  <div class="materia">TecnologÃ­as de InformaciÃ³n</div>
-                  <div class="materia">Contabilidad General</div>
-                  <div class="materia cursada">EconomÃ­a I</div>
-                  <div class="materia">AdministraciÃ³n I</div>
-                  <div class="materia cursada">Universidad y Siglo XXI</div>
-                  <div class="materia">InglÃ©s I</div>
-        
-                  <!-- Semestre 2 -->
-                  <div class="semestre">S2</div>
-                  <div class="materia">MatemÃ¡ticas Discretas</div>
-                  <div class="materia cursada">Plataformas Operativas</div>
-                  <div class="materia">Fundamentos de ProgramaciÃ³n</div>
-                  <div class="materia">Conceptos JurÃ­dicos Fundamentales</div>
-                  <div class="materia cursada">Desarrollo de InnovaciÃ³n TecnolÃ³gica</div>
-                  <div class="materia">ExpresiÃ³n Oral y Escrita</div>
-                  <div class="materia cursada">InglÃ©s II</div>
-        
-                  <!-- Semestre 3 -->
-                  <div class="semestre">S3</div>
-                  <div class="materia cursada">EstadÃ­stica I</div>
-                  <div class="materia">AnÃ¡lisis y DiseÃ±o de Sistemas</div>
-                  <div class="materia">Estructura de Datos</div>
-                  <div class="materia cursada">Sistemas de Bases de Datos I</div>
-                  <div class="materia">Arquitectura de Computadoras</div>
-                  <div class="materia cursada">Ã‰tica Profesional</div>
-                  <div class="materia">InglÃ©s III</div>
-        
-                  <!-- Semestre 4 -->
-                  <div class="semestre">S4</div>
-                  <div class="materia">EstadÃ­stica II</div>
-                  <div class="materia cursada">IngenierÃ­a de Software I</div>
-                  <div class="materia">Fundamentos de Redes</div>
-                  <div class="materia">Sistemas de Bases de Datos II</div>
-                  <div class="materia cursada">Marco JurÃ­dico en Materia InformÃ¡tica</div>
-                  <div class="materia">DiseÃ±o Organizacional</div>
-                  <div class="materia cursada">InglÃ©s IV</div>
-        
-                  <!-- Semestre 5 -->
-                  <div class="semestre">S5</div>
-                  <div class="materia">InvestigaciÃ³n de Operaciones I</div>
-                  <div class="materia cursada">GestiÃ³n de Servicios y Procesos</div>
-                  <div class="materia">IngenierÃ­a de Software II</div>
-                  <div class="materia">ProgramaciÃ³n Orientada a Objetos</div>
-                  <div class="materia">Software Especializado</div>
-                  <div class="materia cursada">Sistemas de InformaciÃ³n Gerencial</div>
-                  <div class="materia">AdministraciÃ³n Financiera</div>
-        
-                  <!-- Semestre 6 -->
-                  <div class="semestre">S6</div>
-                  <div class="materia">AdministraciÃ³n de Proyectos I</div>
-                  <div class="materia">Especializante Selectiva I</div>
-                  <div class="materia">Seguridad InformÃ¡tica</div>
-                  <div class="materia cursada">ProgramaciÃ³n Web</div>
-                  <div class="materia">AdministraciÃ³n EstratÃ©gica</div>
-                  <div class="materia">Inteligencia de Negocios</div>
-        
-                  <!-- Semestre 7 -->
-                  <div class="semestre">S7</div>
-                  <div class="materia">AuditorÃ­a de Sistemas</div>
-                  <div class="materia cursada">Especializante Selectiva II</div>
-                  <div class="materia">Optativa Abierta I</div>
-                  <div class="materia">PrÃ¡cticas Profesionales</div>
-                  <div class="materia">Liderazgo y Habilidades Directivas</div>
-                  <div class="materia">MetodologÃ­a y PrÃ¡ctica de la InvestigaciÃ³n</div>
-        
-                  <!-- Semestre 8 -->
-                  <div class="semestre">S8</div>
-                  <div class="materia cursada">Optativa Abierta II</div>
-                  <div class="materia">Especializante Selectiva III</div>
-                  <div class="materia">Optativa Abierta III</div>
-                  <div class="materia">Desarrollo Multimedia</div>
-                  <div class="materia cursada">Desarrollo de Emprendedores</div>
-                  <div class="materia">Seminario de TitulaciÃ³n</div>
+                    <div class="materia cursada">Matemáticas I</div>
+                    <div class="materia">Tecnologías de Información</div>
+                    <div class="materia">Contabilidad General</div>
+                    <div class="materia cursada">Economía I</div>
+                    <div class="materia">Administración I</div>
+                    <div class="materia cursada">Universidad y Siglo XXI</div>
+                    <div class="materia">Inglés I</div>
+
+                    <!-- Semestre 2 -->
+                    <div class="semestre">S2</div>
+                    <div class="materia">Matemáticas Discretas</div>
+                    <div class="materia cursada">Plataformas Operativas</div>
+                    <div class="materia">Fundamentos de Programación</div>
+                    <div class="materia">Conceptos Jurídicos Fundamentales</div>
+                    <div class="materia cursada">Desarrollo de Innovación Tecnológica</div>
+                    <div class="materia">Expresión Oral y Escrita</div>
+                    <div class="materia cursada">Inglés II</div>
+
+                    <!-- Semestre 3 -->
+                    <div class="semestre">S3</div>
+                    <div class="materia cursada">Estadística I</div>
+                    <div class="materia">Análisis y Diseño de Sistemas</div>
+                    <div class="materia">Estructura de Datos</div>
+                    <div class="materia cursada">Sistemas de Bases de Datos I</div>
+                    <div class="materia">Arquitectura de Computadoras</div>
+                    <div class="materia cursada">Ética Profesional</div>
+                    <div class="materia">Inglés III</div>
+
+                    <!-- Semestre 4 -->
+                    <div class="semestre">S4</div>
+                    <div class="materia">Estadística II</div>
+                    <div class="materia cursada">Ingeniería de Software I</div>
+                    <div class="materia">Fundamentos de Redes</div>
+                    <div class="materia">Sistemas de Bases de Datos II</div>
+                    <div class="materia cursada">Marco Jurídico en Materia Informática</div>
+                    <div class="materia">Diseño Organizacional</div>
+                    <div class="materia cursada">Inglés IV</div>
+
+                    <!-- Semestre 5 -->
+                    <div class="semestre">S5</div>
+                    <div class="materia">Investigación de Operaciones I</div>
+                    <div class="materia cursada">Gestión de Servicios y Procesos</div>
+                    <div class="materia">Ingeniería de Software II</div>
+                    <div class="materia">Programación Orientada a Objetos</div>
+                    <div class="materia">Software Especializado</div>
+                    <div class="materia cursada">Sistemas de Información Gerencial</div>
+                    <div class="materia">Administración Financiera</div>
+
+                    <!-- Semestre 6 -->
+                    <div class="semestre">S6</div>
+                    <div class="materia">Administración de Proyectos I</div>
+                    <div class="materia">Especializante Selectiva I</div>
+                    <div class="materia">Seguridad Informática</div>
+                    <div class="materia cursada">Programación Web</div>
+                    <div class="materia">Administración Estratégica</div>
+                    <div class="materia">Inteligencia de Negocios</div>
+
+                    <!-- Semestre 7 -->
+                    <div class="semestre">S7</div>
+                    <div class="materia">Auditoría de Sistemas</div>
+                    <div class="materia cursada">Especializante Selectiva II</div>
+                    <div class="materia">Optativa Abierta I</div>
+                    <div class="materia">Prácticas Profesionales</div>
+                    <div class="materia">Liderazgo y Habilidades Directivas</div>
+                    <div class="materia">Metodología y Práctica de la Investigación</div>
+
+                    <!-- Semestre 8 -->
+                    <div class="semestre">S8</div>
+                    <div class="materia cursada">Optativa Abierta II</div>
+                    <div class="materia">Especializante Selectiva III</div>
+                    <div class="materia">Optativa Abierta III</div>
+                    <div class="materia">Desarrollo Multimedia</div>
+                    <div class="materia cursada">Desarrollo de Emprendedores</div>
+                    <div class="materia">Seminario de Titulación</div>
                 </div>
               </div>
         
