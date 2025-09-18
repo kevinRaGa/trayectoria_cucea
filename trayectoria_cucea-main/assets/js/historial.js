@@ -1,6 +1,4 @@
-﻿// historial.js (cleaned)
-
-// Cache static elements
+﻿// Cache static elements
 const menuToggle = document.getElementById('menuToggle');
 const content = document.getElementById('content');
 const overlay = document.getElementById('overlay');
