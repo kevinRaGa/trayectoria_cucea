@@ -121,3 +121,24 @@ header img { height: 55px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.3)); }
   .overlay { display: none; position: fixed; top: 80px; left: 0; width: 100%; height: calc(100% - 80px); background: rgba(0,0,0,0.5); z-index: 98; }
   .content { margin-left: 10px; width: calc(100% - 20px); }
 }
+
+/* Contenedor a la derecha */
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Icono de usuario */
+.user-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%; /* redondeado tipo avatar */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+}

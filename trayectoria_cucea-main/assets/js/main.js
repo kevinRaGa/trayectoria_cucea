@@ -120,3 +120,24 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCircle('progressCreditos', 73, 2000);
   animateCircle('progressPromedio', 93, 2000);
 });
+
+/* Contenedor a la derecha */
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Icono de usuario */
+.user-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%; /* redondeado tipo avatar */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
