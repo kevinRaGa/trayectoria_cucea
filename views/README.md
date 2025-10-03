@@ -1,0 +1,1 @@
+# Aqui van las vistas de la aplicacion o templates
