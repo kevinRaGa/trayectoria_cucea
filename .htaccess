@@ -1,0 +1,25 @@
+<Files ".env">
+   Require all denied
+</Files>
+
+<FilesMatch "^\..*env">
+   Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|backup|gitignore|sql)$">
+   Require all denied
+</FilesMatch>
+
+# Habilitar el motor de reescritura
+RewriteEngine On
+
+# Redirigir todo a index.php si el archivo/carpeta no existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+ErrorDocument 403 "Acceso denegado"
+ErrorDocument 404 "No encontrado"
+ErrorDocument 500 "Error interno"
+ErrorDocument 503 "Mantenimiento"
+
